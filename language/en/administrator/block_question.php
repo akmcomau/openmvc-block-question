@@ -14,6 +14,7 @@ $_LANGUAGE = [
 	'answer' => 'Answer',
 	'solution' => 'Solution',
 	'search' => 'Search',
+	'no_questions' => 'No Questions Found',
 	'search_results' => 'Blocks',
 	'error_search_title' => 'Must not exceed 256 characters',
 ];

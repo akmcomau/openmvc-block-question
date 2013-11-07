@@ -24,8 +24,13 @@ class Installer {
 		// create block_mathjax database table
 		$table = $model->getModel('\\modules\\block_question\\classes\\models\\BlockQuestion');
 		$table->createTable();
+		$table->createIndexes();
+		$table->createForeignKeys();
+
 		$table = $model->getModel('\\modules\\block_question\\classes\\models\\BlockQuestionCategoryLink');
 		$table->createTable();
+		$table->createIndexes();
+		$table->createForeignKeys();
 	}
 
 	public function uninstall() {

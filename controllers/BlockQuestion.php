@@ -16,6 +16,12 @@ class BlockQuestion extends Controller {
 		$block = $model->getModel('\core\classes\models\Block');
 		$question = $model->getModel('\modules\block_question\classes\models\BlockQuestion')->get(['get_random_record' => TRUE]);
 
+		if (!$question) {
+			$template = $this->getTemplate('pages/no_questions.php', [], 'modules'.DS.'block_question');
+			$this->response->setContent($template->render());
+			return;
+		}
+
 		$data = [
 			'title' => $question->title,
 			'question' => $question->getQuestion(),
@@ -24,7 +30,15 @@ class BlockQuestion extends Controller {
 			'theory' => $question->getTheory(),
 		];
 
-		$template = $this->getTemplate('pages/question.php', $data, 'modules'.DS.'block_question');
+		$template = $this->getTemplate('pages/random.php', $data, 'modules'.DS.'block_question');
 		$this->response->setContent($template->render());
+	}
+
+	public function browse() {
+
+	}
+
+	public function search() {
+
 	}
 }

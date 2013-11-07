@@ -6,5 +6,11 @@ $_URLS = [
 		'random' => [
 			'link_text' => ['en' => 'Random Question'],
 		],
+		'browse' => [
+			'link_text' => ['en' => 'Browse Questions'],
+		],
+		'search' => [
+			'link_text' => ['en' => 'Search Questions'],
+		],
 	],
 ];
