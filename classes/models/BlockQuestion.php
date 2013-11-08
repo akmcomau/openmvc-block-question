@@ -15,10 +15,26 @@ class BlockQuestion extends Model {
 			'auto_increment' => TRUE,
 			'null_allowed'   => FALSE,
 		],
+		'site_id' => [
+			'data_type'      => 'int',
+			'null_allowed'   => FALSE,
+		],
 		'block_question_title' => [
 			'data_type'      => 'text',
 			'data_length'    => 64,
 			'null_allowed'   => FALSE,
+		],
+		'block_question_number' => [
+			'data_type'      => 'int',
+			'null_allowed'   => FALSE,
+		],
+		'block_question_sub_number' => [
+			'data_type'      => 'int',
+			'null_allowed'   => TRUE,
+		],
+		'block_question_type' => [
+			'data_type'      => 'int',
+			'null_allowed'   => TRUE,
 		],
 		'theory_block_id' => [
 			'data_type'      => 'int',
@@ -36,6 +52,11 @@ class BlockQuestion extends Model {
 			'data_type'      => 'int',
 			'null_allowed'   => TRUE,
 		],
+	];
+
+	protected $indexes = [
+		'site_id',
+		'block_question_type',
 	];
 
 	protected $foreign_keys = [
