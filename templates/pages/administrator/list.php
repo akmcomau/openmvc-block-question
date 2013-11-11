@@ -51,7 +51,7 @@
 					<div class="pagination">
 						<?php echo $pagination->getPageLinks(); ?>
 					</div>
-					<form action="<?php echo $this->url->getURL('administrator/Blocks', 'delete'); ?>" method="post">
+					<form action="<?php echo $this->url->getUrl('administrator/Blocks', 'delete'); ?>" method="post">
 						<table class="table">
 							<tr>
 								<th></th>
@@ -65,7 +65,7 @@
 								<td><?php echo $question->title; ?></td>
 								<td><?php echo $question->getCategoryName(); ?></td>
 								<td>
-									<a href="<?php echo $this->url->getURL('administrator/BlockQuestion', 'edit', [$question->id]); ?>" class="btn btn-primary"><i class="icon-edit-sign" title="<?php echo $text_edit; ?>"></i></a>
+									<a href="<?php echo $this->url->getUrl('administrator/BlockQuestion', 'edit', [$question->id]); ?>" class="btn btn-primary"><i class="icon-edit-sign" title="<?php echo $text_edit; ?>"></i></a>
 								</td>
 							</tr>
 							<?php } ?>
