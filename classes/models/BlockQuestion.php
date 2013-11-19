@@ -172,6 +172,11 @@ class BlockQuestion extends Model {
 		return NULL;
 	}
 
+	public function canonicalTitle() {
+		$title = str_replace('_', '-', str_replace(' ', '-', $this->title));
+		return urlencode($title);
+	}
+
 	public function insert() {
 		// update the block
 		parent::insert();
