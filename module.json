@@ -7,5 +7,11 @@
 		"administrator\\BlockQuestion"
 	],
 	"default_config": {
+		"types": {
+			"normal": {
+			  "id": 1,
+			  "name": "Normal"
+			}
+		}
 	}
 }

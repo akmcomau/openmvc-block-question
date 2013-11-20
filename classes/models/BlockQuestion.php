@@ -82,6 +82,11 @@ class BlockQuestion extends Model {
 		return $category ? $category->name : NULL;
 	}
 
+	public function getCategoryId() {
+		$category = $this->getCategory();
+		return $category ? $category->id : NULL;
+	}
+
 	public function getCategory() {
 		// object is not in the database
 		if (!$this->id) {
@@ -124,6 +129,15 @@ class BlockQuestion extends Model {
 		return NULL;
 	}
 
+	public function getTheoryTag() {
+		$block = $this->getTheory();
+		if ($block) {
+			return $block->tag;
+		}
+
+		return NULL;
+	}
+
 	public function setQuestion(Block $block = NULL) {
 		$this->objects['question'] = $block;
 	}
@@ -135,6 +149,15 @@ class BlockQuestion extends Model {
 
 		if ($this->question_block_id) {
 			return $this->getModel('\\core\\classes\\models\\Block')->get(['id' => $this->question_block_id]);
+		}
+
+		return NULL;
+	}
+
+	public function getQuestionTag() {
+		$block = $this->getQuestion();
+		if ($block) {
+			return $block->tag;
 		}
 
 		return NULL;
@@ -156,6 +179,15 @@ class BlockQuestion extends Model {
 		return NULL;
 	}
 
+	public function getAnswerTag() {
+		$block = $this->getAnswer();
+		if ($block) {
+			return $block->tag;
+		}
+
+		return NULL;
+	}
+
 	public function setSolution(Block $block = NULL) {
 		$this->objects['solution'] = $block;
 	}
@@ -167,6 +199,15 @@ class BlockQuestion extends Model {
 
 		if ($this->solution_block_id) {
 			return $this->getModel('\\core\\classes\\models\\Block')->get(['id' => $this->solution_block_id]);
+		}
+
+		return NULL;
+	}
+
+	public function getSolutionTag() {
+		$block = $this->getSolution();
+		if ($block) {
+			return $block->tag;
 		}
 
 		return NULL;
@@ -200,7 +241,7 @@ class BlockQuestion extends Model {
 		]);
 
 		// update the category
-		$category = $this->objects['category'];
+		$category = $this->getCategory();
 		if ($category && $link) {
 			// update the category
 			$link->block_category_id = $category->id;
