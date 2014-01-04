@@ -74,7 +74,7 @@
 						<div class="row">
 							<div class="col-md-3 col-sm-3 title-2column"><?php echo $text_question_tag; ?></div>
 							<div class="col-md-9 col-sm-9 ">
-								<input type="text" class="form-control" name="question" value="<?php echo $question->getQuestionTag(); ?>" />
+								<input type="text" class="form-control" name="question" value="<?php echo $form->getValue('question') ? $form->getValue('question') : $question->getQuestionTag(); ?>" />
 								<?php echo $form->getHtmlErrorDiv('question'); ?>
 							</div>
 						</div>
@@ -82,7 +82,7 @@
 						<div class="row">
 							<div class="col-md-3 col-sm-3 title-2column"><?php echo $text_answer_tag; ?></div>
 							<div class="col-md-9 col-sm-9 ">
-								<input type="text" class="form-control" name="answer" value="<?php echo $question->getAnswerTag(); ?>" />
+								<input type="text" class="form-control" name="answer" value="<?php echo $form->getValue('answer') ? $form->getValue('answer') : $question->getAnswerTag(); ?>" />
 								<?php echo $form->getHtmlErrorDiv('answer'); ?>
 							</div>
 						</div>
@@ -90,7 +90,7 @@
 						<div class="row">
 							<div class="col-md-3 col-sm-3 title-2column"><?php echo $text_solution_tag; ?></div>
 							<div class="col-md-9 col-sm-9 ">
-								<input type="text" class="form-control" name="solution" value="<?php echo $question->getSolutionTag(); ?>" />
+								<input type="text" class="form-control" name="solution" value="<?php echo $form->getValue('solution') ? $form->getValue('solution') : $question->getSolutionTag(); ?>" />
 								<?php echo $form->getHtmlErrorDiv('solution'); ?>
 							</div>
 						</div>

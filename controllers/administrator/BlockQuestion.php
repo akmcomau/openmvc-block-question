@@ -263,7 +263,7 @@ class BlockQuestion extends Controller {
 
 		$model  = new Model($this->config, $this->database);
 		$block = $model->getModel('\core\classes\models\Block');
-		$check_block_tag = function($value) use ($block) {
+		$check_block_tag = function($value, $form) use ($model, $block) {
 			if ($value == '') {
 				return TRUE;
 			}
@@ -272,7 +272,24 @@ class BlockQuestion extends Controller {
 				return TRUE;
 			}
 			else {
-				return FALSE;
+				$block_category = NULL;
+				if ((int)$form->getValue('category')) {
+					$block_category = $model->getModel('\core\classes\models\BlockCategory')->get([
+						'id' => (int)$form->getValue('category'),
+					]);
+				}
+
+				$type = $model->getModel('\core\classes\models\BlockType')->get(['name' => $this->config->siteConfig()->default_block_type]);
+
+				$block = $model->getModel('\core\classes\models\Block');
+				$block->site_id = $this->config->siteConfig()->site_id;
+				$block->type_id = $type->id;
+				$block->tag = $value;
+				$block->title = $value;
+				$block->content = '';
+				$block->setCategory($block_category);
+				$block->insert();
+				return TRUE;
 			}
 		};
 

@@ -88,28 +88,31 @@ class BlockQuestion extends Model {
 	}
 
 	public function getCategory() {
+		if (isset($this->objects['category']) && $this->objects['category']) {
+			return $this->objects['category'];
+		}
+
 		// object is not in the database
 		if (!$this->id) {
 			return NULL;
 		}
 
-		if (!isset($this->objects['category'])) {
-			$sql = "
-				SELECT block_category.*
-				FROM
-					block_question_category_link
-					JOIN block_category USING (block_category_id)
-				WHERE
-					block_question_id=".$this->database->quote($this->id)."
-			";
-			$record = $this->database->querySingle($sql);
-			if ($record) {
-				 $this->objects['category'] = $this->getModel('\\core\\classes\\models\\BlockCategory', $record);
-			}
-			else {
-				$this->objects['category'] =  NULL;
-			}
+		$sql = "
+			SELECT block_category.*
+			FROM
+				block_question_category_link
+				JOIN block_category USING (block_category_id)
+			WHERE
+				block_question_id=".$this->database->quote($this->id)."
+		";
+		$record = $this->database->querySingle($sql);
+		if ($record) {
+			 $this->objects['category'] = $this->getModel('\\core\\classes\\models\\BlockCategory', $record);
 		}
+		else {
+			$this->objects['category'] =  NULL;
+		}
+
 		return $this->objects['category'];
 	}
 

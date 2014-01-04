@@ -51,7 +51,7 @@
 					<div class="pagination">
 						<?php echo $pagination->getPageLinks(); ?>
 					</div>
-					<form action="<?php echo $this->url->getUrl('administrator/Blocks', 'delete'); ?>" method="post">
+					<form action="<?php echo $this->url->getUrl('administrator/BlockQuestion', 'delete'); ?>" method="post">
 						<table class="table">
 							<tr>
 								<th></th>
