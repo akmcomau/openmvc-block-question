@@ -55,7 +55,7 @@ class BlockQuestion extends Controller {
 	}
 
 	public function add() {
-		$module_config = $this->config->moduleConfig('Block Question');
+		$module_config = $this->config->moduleConfig('\modules\block_question');
 		$this->language->loadLanguageFile('administrator/block_question.php', 'modules'.DS.'block_question');
 
 		$model  = new Model($this->config, $this->database);
@@ -94,7 +94,7 @@ class BlockQuestion extends Controller {
 	}
 
 	public function edit($block_question_id) {
-		$module_config = $this->config->moduleConfig('Block Question');
+		$module_config = $this->config->moduleConfig('\modules\block_question');
 		$this->language->loadLanguageFile('administrator/block_question.php', 'modules'.DS.'block_question');
 
 		$block_question_id = (int)$block_question_id;
